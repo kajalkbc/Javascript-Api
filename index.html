@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image</title>
+    <script>
+        function myFun(){
+            var str = document.getElementById("img").value
+            console.log(str);
+            fetch(`https://source.unsplash.com/random/500x500/?${str}`)         
+            .then(res => {
+                console.log(res.url)
+                document.getElementById("place").innerHTML = `<img src=${res.url} width='600' height='600'/>`
+            })
+            .catch(err => console.log(err))
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="img"/> 
+    <input type="button" value="Click Me" onclick="myFun()"/>
+    <div id="place" style="margin-top: 10%;">
+
+    </div>
+</body>
+</html> 
